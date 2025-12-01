@@ -1,4 +1,4 @@
-require './caesar.rb'
+require './lib/caesar.rb'
 
-phrase = CaesarCipher.new('Pinga#', 1)
-puts phrase.caesar_cipher
+phrase = CaesarCipher.new('Hello World!', 6)
+puts phrase.encode

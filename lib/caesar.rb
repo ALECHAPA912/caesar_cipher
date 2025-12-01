@@ -1,13 +1,22 @@
 class CaesarCipher
+  attr_reader :phrase, :key
 
-  def initialize(string, key)
-    @string = string
+  def initialize(phrase, key)
+    @phrase = phrase
     @key = key
   end
 
-  def caesar_cipher
+  def change_phrase(phrase)
+    @phrase = phrase
+  end
+
+  def change_key(key)
+    @key = key
+  end
+
+  def encode
     alphabet = ('a'..'z').to_a
-    result = @string.split("")
+    result = @phrase.split("")
     result.each_with_index do |letter, i|
       alphabet.each_with_index do |char, index|
         pos = index + @key
@@ -27,4 +36,5 @@ class CaesarCipher
   end
   print result.join("")
   end
+  
 end
