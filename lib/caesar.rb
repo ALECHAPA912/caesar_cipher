@@ -24,18 +24,13 @@ class CaesarCipher
 
   def encode_char(char)
     ordinal = char.ord
-    if ordinal.between?(65,90)
-      base = 64
-      top = 90
-    elsif ordinal.between?(97,122)
-      base = 96
-      top = 122
+    if ordinal.between?(65,90) || ordinal.between?(97,122)
+      base = ordinal < 91 ? 65 : 97
+      new_ordinal = ordinal + @key
+      new_ordinal = (new_ordinal - base ) % 26 + base 
+      new_ordinal.chr
     else
       return char     
     end
-    new_ordinal = ordinal + @key
-    new_ordinal = (new_ordinal - top) + base if new_ordinal > top 
-    new_ordinal.chr
   end
-  
 end
